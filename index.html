@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <script src="main.js"></script>
+    <title>MyWebShop</title>
+</head>
+<body>
+
+    <!--HEADER-->
+    <header>
+        <h1>Web Shop</h1>
+    </header>
+    <!--BODY-->
+    <main>
+        <h2 id=""> Fill the below form to add a new peoduct</h2>
+        <div id="main-container">
+            <!--Uploading form-->
+        <form id="sumbitting-form" onsubmit="createNewProduct(event)">
+            <div>
+                <label class="title"> Name:
+                <input class="input-txt" name="name" placeholder="Product name" >
+            </div>
+                </label>
+            <div>
+                <label class="title"> Price:
+                    <input class="input-txt" name="price" placeholder="10.99">
+                </label>
+            </div>
+           <div>
+            <label class="title">Image
+                <input  name="image" type="file" onchange="handleFileSelect(event);">
+            </label>
+            <div id="imagePreview"></div>
+           </div> 
+           <div>
+               <label id="text-area" class="title">Description:
+                   <textarea name="description" placeholder="Product description"></textarea>
+               </label>
+           </div> 
+           <div>
+               <input id="sub-btn" type="submit">
+           </div>
+        </form>
+        <h2 id="product-list-header">Our Products</h2>
+        <!--Product list output-->
+        <div id="productList"></div>
+        
+        <!--Shopping cart-->
+        <div id="shoppingList-div">
+            <h2>Shopping cart</h2>
+            <div id="items"></div>
+        </div>
+    </div>
+    
+    </main>
+    
+</body>
+<script>
+
+    renderProductList();
+    renderShoppingList();
+    
+
+window.addEventListener("storage",function(event) {
+
+    if(event.key === "productList"){
+
+        renderProductList();
+    }
+    if(event.key === "shoppingCart"){
+
+        renderShoppingList();
+    }
+})
+
+
+</script>
+</html>
